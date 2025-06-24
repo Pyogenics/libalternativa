@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Numerics;
 
-namespace libalternativa.Formats.Tanki.A3D;
+namespace libalternativa.Alternativa.Formats.Tanki.A3D;
 
 class A3D2Transform
 {
@@ -12,19 +12,18 @@ class A3D2Transform
 
     public void Read(BinaryReader binaryReader)
     {
-        float positionX = binaryReader.ReadSingle();
-        float positionY = binaryReader.ReadSingle();
-        float positionZ = binaryReader.ReadSingle();
-        Position = new(positionX, positionY, positionZ);
-        float rotationX = binaryReader.ReadSingle();
-        float rotationY = binaryReader.ReadSingle();
-        float rotationZ = binaryReader.ReadSingle();
-        float rotationW = binaryReader.ReadSingle();
-        Rotation = new(rotationX, rotationY, rotationZ, rotationW);
-        float scaleX = binaryReader.ReadSingle();
-        float scaleY = binaryReader.ReadSingle();
-        float scaleZ = binaryReader.ReadSingle();
-        Scale = new(scaleX, scaleY, scaleZ);
+        Position.X = binaryReader.ReadSingle();
+        Position.Y = binaryReader.ReadSingle();
+        Position.Z = binaryReader.ReadSingle();
+
+        Rotation.X = binaryReader.ReadSingle();
+        Rotation.Y = binaryReader.ReadSingle();
+        Rotation.Z = binaryReader.ReadSingle();
+        Rotation.W = binaryReader.ReadSingle();
+
+        Scale.X = binaryReader.ReadSingle();
+        Scale.Y = binaryReader.ReadSingle();
+        Scale.Z = binaryReader.ReadSingle();
     }
 
     public override string ToString()

@@ -2,21 +2,20 @@ using System;
 using System.IO;
 using System.Numerics;
 
-namespace libalternativa.Formats.Tanki.A3D;
+namespace libalternativa.Alternativa.Formats.Tanki.A3D;
 
 class A3D2Material
 {
     public string Name = "";
-    public Vector3 Color;
+    public Vector3 Color = new();
     public string DiffuseMap = "";
 
     public void Read(BinaryReader binaryReader)
     {
         Name = A3DUtils.ReadNullTerminatedString(binaryReader);
-        float colorR = binaryReader.ReadSingle();
-        float colorG = binaryReader.ReadSingle();
-        float colorB = binaryReader.ReadSingle();
-        Color = new(colorR, colorG, colorB);
+        Color.X = binaryReader.ReadSingle();
+        Color.Y = binaryReader.ReadSingle();
+        Color.Z = binaryReader.ReadSingle();
         DiffuseMap = A3DUtils.ReadNullTerminatedString(binaryReader);
     }
 

@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace libalternativa.Formats.Tanki.A3D;
+namespace libalternativa.Alternativa.Formats.Tanki.A3D;
 
 class A3D2Reader
 {

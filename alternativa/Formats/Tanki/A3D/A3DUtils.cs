@@ -1,7 +1,7 @@
 using System.IO;
 using System.Text;
 
-namespace libalternativa.Formats.Tanki.A3D;
+namespace libalternativa.Alternativa.Formats.Tanki.A3D;
 
 class A3DUtils
 {
