@@ -14,6 +14,13 @@ class BigEndianHelper
         return i;
     }
 
+    public static int ReadInt16BE(BinaryReader binaryReader)
+    {
+        int i = binaryReader.ReadByte() << 8;
+        i += binaryReader.ReadByte();
+        return i;
+    }
+
     public static float ReadSingleBE(BinaryReader binaryReader)
     {
         byte[] f = binaryReader.ReadBytes(4);
