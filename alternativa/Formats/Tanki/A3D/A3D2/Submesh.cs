@@ -1,9 +1,9 @@
 using System;
 using System.IO;
 
-namespace libalternativa.Alternativa.Formats.Tanki.A3D;
+namespace libalternativa.Alternativa.Formats.Tanki.A3D.A3D2;
 
-class A3D2Submesh
+class Submesh : IModelDataObject
 {
     public int FaceCount;
     public int[] Indices = Array.Empty<int>();
@@ -30,8 +30,13 @@ class A3D2Submesh
         MaterialID = binaryReader.ReadInt16();
     }
 
+    public void Write(BinaryWriter binaryWriter)
+    {
+        throw new NotImplementedException();
+    }
+
     public override string ToString()
     {
-        return String.Format("[A3D2Submesh FaceCount={0} Indices={1} SmoothingGroups={2} MaterialID={3}]", FaceCount, Indices.Length, SmoothingGroups.Length, MaterialID);
+        return String.Format("[Submesh FaceCount={0} Indices={1} SmoothingGroups={2} MaterialID={3}]", FaceCount, Indices.Length, SmoothingGroups.Length, MaterialID);
     }
 }

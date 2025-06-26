@@ -12,11 +12,11 @@ class A3D2Reader
     private const int TRANSFORM_BLOCK_SIGNATURE = 3;
     private const int OBJECT_BLOCK_SIGNATURE = 5;
 
-    public A3D2Material[] Materials = Array.Empty<A3D2Material>();
-    public A3D2Mesh[] Meshes = Array.Empty<A3D2Mesh>();
-    public A3D2Transform[] Transforms = Array.Empty<A3D2Transform>();
+    public A3D2.Material[] Materials = Array.Empty<A3D2.Material>();
+    public A3D2.Mesh[] Meshes = Array.Empty<A3D2.Mesh>();
+    public A3D2.Transform[] Transforms = Array.Empty<A3D2.Transform>();
     public int[] TransformParentIDs = Array.Empty<int>();
-    public A3D2Object[] Objects = Array.Empty<A3D2Object>();
+    public A3D2.Object[] Objects = Array.Empty<A3D2.Object>();
 
     public void Read(BinaryReader binaryReader)
     {
@@ -46,10 +46,10 @@ class A3D2Reader
         if (blockSignature != MATERIAL_BLOCK_SIGNATURE) throw new Exception("Invalid A3D material block signature");
 
         int materialCount = binaryReader.ReadInt32();
-        Materials = new A3D2Material[materialCount];
+        Materials = new A3D2.Material[materialCount];
         for (int materialI = 0; materialI < materialCount; materialI++)
         {
-            A3D2Material material = new();
+            A3D2.Material material = new();
             material.Read(binaryReader);
             Materials[materialI] = material;
         }
@@ -62,10 +62,10 @@ class A3D2Reader
         if (blockSignature != MESH_BLOCK_SIGNATURE) throw new Exception("Invalid A3D mesh block signature");
 
         int meshCount = binaryReader.ReadInt32();
-        Meshes = new A3D2Mesh[meshCount];
+        Meshes = new A3D2.Mesh[meshCount];
         for (int meshI = 0; meshI < meshCount; meshI++)
         {
-            A3D2Mesh mesh = new();
+            A3D2.Mesh mesh = new();
             mesh.Read(binaryReader);
             Meshes[meshI] = mesh;
         }
@@ -78,10 +78,10 @@ class A3D2Reader
         if (blockSignature != TRANSFORM_BLOCK_SIGNATURE) throw new Exception("Invalid A3D transform block signature");
 
         int transformCount = binaryReader.ReadInt32();
-        Transforms = new A3D2Transform[transformCount];
+        Transforms = new A3D2.Transform[transformCount];
         for (int transformI = 0; transformI < transformCount; transformI++)
         {
-            A3D2Transform transform = new();
+            A3D2.Transform transform = new();
             transform.Read(binaryReader);
             Transforms[transformI] = transform;
         }
@@ -101,10 +101,10 @@ class A3D2Reader
         if (blockSignature != OBJECT_BLOCK_SIGNATURE) throw new Exception("Invalid A3D object block signature");
 
         int objectCount = binaryReader.ReadInt32();
-        Objects = new A3D2Object[objectCount];
+        Objects = new A3D2.Object[objectCount];
         for (int objectI = 0; objectI < objectCount; objectI++)
         {
-            A3D2Object obj = new();
+            A3D2.Object obj = new();
             obj.Read(binaryReader);
             Objects[objectI] = obj;
         }

@@ -1,37 +1,43 @@
 using System;
 using System.IO;
 
-namespace libalternativa.Alternativa.Formats.Tanki.A3D;
+namespace libalternativa.Alternativa.Formats.Tanki.A3D.A3D2;
 
-class A3D2Mesh
+class Mesh : IModelDataObject
 {
-    public A3DVertexBuffer[] VertexBuffers = Array.Empty<A3DVertexBuffer>();
-    public A3D2Submesh[] Submeshes = Array.Empty<A3D2Submesh>();
+    public VertexBuffer[] VertexBuffers = Array.Empty<VertexBuffer>();
+    public Submesh[] Submeshes = Array.Empty<Submesh>();
 
     public void Read(BinaryReader binaryReader)
     {
         int vertexCount = binaryReader.ReadInt32();
         int vertexBufferCount = binaryReader.ReadInt32();
-        VertexBuffers = new A3DVertexBuffer[vertexBufferCount];
+        VertexBuffers = new VertexBuffer[vertexBufferCount];
         for (int vertexBufferI = 0; vertexBufferI < vertexBufferCount; vertexBufferI++)
         {
-            A3DVertexBuffer vertexBuffer = new();
+            VertexBuffer vertexBuffer = new();
             vertexBuffer.Read(binaryReader, vertexCount);
             VertexBuffers[vertexBufferI] = vertexBuffer;
         }
 
         int submeshCount = binaryReader.ReadInt32();
-        Submeshes = new A3D2Submesh[submeshCount];
+        Submeshes = new Submesh[submeshCount];
         for (int submeshI = 0; submeshI < submeshCount; submeshI++)
         {
-            A3D2Submesh submesh = new();
+            Submesh submesh = new();
             submesh.Read(binaryReader);
             Submeshes[submeshI] = submesh;
         }
     }
 
+    public void Write(BinaryWriter binaryWriter)
+    {
+        throw new NotImplementedException();
+    }
+
     public override string ToString()
     {
-        return String.Format("[A3D2Mesh VertexBuffers={0} Submeshes={1}]", VertexBuffers.Length, Submeshes.Length);
+        return String.Format("[Mesh VertexBuffers={0} Submeshes={1}]", VertexBuffers.Length, Submeshes.Length);
     }
+
 }

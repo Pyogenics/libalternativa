@@ -3,7 +3,7 @@ using System.IO;
 
 namespace libalternativa.Alternativa.Formats.Tanki.A3D;
 
-class A3DVertexBuffer
+class VertexBuffer
 {
     public const int VERTEXTYPE_COORDINATE = 1;
     public const int VERTEXTYPE_UV1 = 2;
@@ -26,6 +26,11 @@ class A3DVertexBuffer
             float vertex = binaryReader.ReadSingle();
             VertexData[vertexComponentI] = vertex;
         }
+    }
+
+    public void Write(BinaryWriter binaryWriter)
+    {
+        throw new NotImplementedException();
     }
 
     public static int GetVertexSize(int bufferType)

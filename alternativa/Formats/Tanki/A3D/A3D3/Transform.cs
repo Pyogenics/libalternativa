@@ -2,16 +2,19 @@ using System;
 using System.IO;
 using System.Numerics;
 
-namespace libalternativa.Alternativa.Formats.Tanki.A3D;
+namespace libalternativa.Alternativa.Formats.Tanki.A3D.A3D3;
 
-class A3D2Transform
+class Transform : IModelDataObject
 {
-    public Vector3 Position;
-    public Vector4 Rotation;
-    public Vector3 Scale;
+    public string Name = "";
+    public Vector3 Position = new();
+    public Vector4 Rotation = new();
+    public Vector3 Scale = new();
 
     public void Read(BinaryReader binaryReader)
     {
+        Name = IOHelper.ReadLengthPrefixedString(binaryReader);
+
         Position.X = binaryReader.ReadSingle();
         Position.Y = binaryReader.ReadSingle();
         Position.Z = binaryReader.ReadSingle();
@@ -26,8 +29,13 @@ class A3D2Transform
         Scale.Z = binaryReader.ReadSingle();
     }
 
+    public void Write(BinaryWriter binaryWriter)
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override string ToString()
     {
-        return String.Format("[A3D2Transform Position={0} Rotation={1} Scale={2}]", Position, Rotation, Scale);
+        return String.Format("[Transform Name='{0}' Position={1} Rotation={2} Scale={3}]", Name, Position, Rotation, Scale);
     }
 }
