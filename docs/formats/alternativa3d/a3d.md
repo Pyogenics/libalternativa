@@ -133,6 +133,7 @@ struct A3D1Surface
 Newest version supported by the opensource flash Alternativa3D engine, also uses the alternativa protocol serialisation format (like A3D1). This version of the format adds zlib compression support, light objects, animation, skinning, sprites and decals as well as reducing amount of optional flags per model by properly using optional fields (only marking select fields as optional instead of most of them).
 
 There are 4 minor versions of this format:
+
 | Version | Notes                                   |
 |---------|-----------------------------------------|
 | 2.0     |                                         |
