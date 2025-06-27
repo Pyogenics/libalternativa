@@ -1,1 +1,4 @@
 site_name: libalternativa
+nav:
+  - Home: index.md
+  - Formats: formats.md
