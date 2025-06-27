@@ -1,4 +1,10 @@
 site_name: libalternativa
 nav:
   - Home: index.md
-  - Formats: formats.md
+  - Tanki Online:
+    - A3D: formats/tanki/a3d.md
+    - BattleMap: formats/tanki/battlemap.md
+    - LightmapData: formats/tanki/lightmapdata.md
+    - Tara: formats/tanki/tara.md
+  - Alternativa3D:
+    - A3D: formats/alternativa3d/a3d.md
