@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
-        <title>A3D (Alternativa3D) - libalternativa</title>
+        <title>A3D - libalternativa</title>
         <link href="../../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../../css/brands.min.css" rel="stylesheet">
@@ -37,8 +37,35 @@
                             <li class="nav-item">
                                 <a href="../../.." class="nav-link">Home</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="../../" class="nav-link">Formats</a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Tanki Online</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../tanki/a3d/" class="dropdown-item">A3D</a>
+</li>
+                                    
+<li>
+    <a href="../../tanki/battlemap/" class="dropdown-item">BattleMap</a>
+</li>
+                                    
+<li>
+    <a href="../../tanki/lightmapdata/" class="dropdown-item">LightmapData</a>
+</li>
+                                    
+<li>
+    <a href="../../tanki/tara/" class="dropdown-item">Tara</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Alternativa3D</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">A3D</a>
+</li>
+                                </ul>
                             </li>
                         </ul>
 
@@ -48,6 +75,16 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../../tanki/tara/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -204,13 +241,33 @@
 </code></pre>
 <h2 id="a3d2">A3D2</h2>
 <p>Newest version supported by the opensource flash Alternativa3D engine, also uses the alternativa protocol serialisation format (like A3D1). This version of the format adds zlib compression support, light objects, animation, skinning, sprites and decals as well as reducing amount of optional flags per model by properly using optional fields (only marking select fields as optional instead of most of them).</p>
-<p>There are 4 minor versions of this format:
-| Version | Notes                                   |
-|---------|-----------------------------------------|
-| 2.0     |                                         |
-| 2.4     | aka A3DExtra1, adds A3D2Layer           |
-| 2.5     | aka A3DExtra2, adds A3D2Camera, A3D2LOD |
-| 2.6     | Package compression is mandatory        |</p>
+<p>There are 4 minor versions of this format:</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.0</td>
+<td></td>
+</tr>
+<tr>
+<td>2.4</td>
+<td>aka A3DExtra1, adds A3D2Layer</td>
+</tr>
+<tr>
+<td>2.5</td>
+<td>aka A3DExtra2, adds A3D2Camera, A3D2LOD</td>
+</tr>
+<tr>
+<td>2.6</td>
+<td>Package compression is mandatory</td>
+</tr>
+</tbody>
+</table>
 <h3 id="research-materials_1">Research materials</h3>
 <ul>
 <li><a href="https://github.com/AlternativaPlatform/Alternativa3D/blob/master/src/alternativa/engine3d/loaders/ParserA3D.as">Alternativa3D engine parser</a></li>
