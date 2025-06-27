@@ -1,4 +1,17 @@
 site_name: libalternativa
+repo_url: https://github.com/Pyogenics/libalternativa
+edit_uri: tree/master/docs
+docs_dir: docs
+
+plugins:
+  - search
+  - git-committers:
+      repository: Pyogenics/libalternativa
+      branch: master
+
+theme:
+  name: bootstrap4
+
 nav:
   - Home: index.md
   - Tanki Online:
