@@ -1,0 +1,317 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="map">
+    <xs:complexType>
+        <xs:all>
+            <xs:element name="static-geometry">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="prop" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:all>
+                                    <xs:element name="rotation">
+                                        <xs:complexType>
+                                            <xs:all>
+                                                <xs:element name="x" type="xs:float" minOccurs="0"/>
+                                                <xs:element name="y" type="xs:float" minOccurs="0"/>
+                                                <xs:element name="z" type="xs:float"/>
+                                            </xs:all>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="texture-name" type="xs:string"/>
+                                    <xs:element name="position">
+                                        <xs:complexType>
+                                            <xs:all>
+                                                <xs:element name="x" type="xs:float"/>
+                                                <xs:element name="y" type="xs:float"/>
+                                                <xs:element name="z" type="xs:float"/>
+                                            </xs:all>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:all>
+                                <xs:attribute name="library-name" type="xs:string" use="required"/>
+                                <xs:attribute name="group-name" type="xs:string" use="required"/>
+                                <xs:attribute name="name" type="xs:string" use="required"/>
+                                <xs:attribute name="free" type="xs:boolean"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="collision-geometry">
+                <xs:complexType>
+                    <xs:choice minOccurs="0" maxOccurs="unbounded">
+                        <xs:element name="collision-box" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:all>
+                                    <xs:element name="position">
+                                        <xs:complexType>
+                                            <xs:all>
+                                                <xs:element name="x" type="xs:float"/>
+                                                <xs:element name="y" type="xs:float"/>
+                                                <xs:element name="z" type="xs:float"/>
+                                            </xs:all>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="rotation">
+                                        <xs:complexType>
+                                            <xs:all>
+                                                <xs:element name="x" type="xs:float"/>
+                                                <xs:element name="y" type="xs:float"/>
+                                                <xs:element name="z" type="xs:float"/>
+                                            </xs:all>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="size">
+                                        <xs:complexType>
+                                            <xs:all>
+                                                <xs:element name="x" type="xs:float"/>
+                                                <xs:element name="y" type="xs:float"/>
+                                                <xs:element name="z" type="xs:float"/>
+                                            </xs:all>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:all>
+                                <xs:attribute name="id" type="xs:int"/>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="collision-plane" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:all>
+                                    <xs:element name="width" type="xs:float"/>
+                                    <xs:element name="length" type="xs:float"/>
+                                    <xs:element name="position">
+                                        <xs:complexType>
+                                            <xs:all>
+                                                <xs:element name="x" type="xs:float"/>
+                                                <xs:element name="y" type="xs:float"/>
+                                                <xs:element name="z" type="xs:float"/>
+                                            </xs:all>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="rotation">
+                                        <xs:complexType>
+                                            <xs:all>
+                                                <xs:element name="x" type="xs:float"/>
+                                                <xs:element name="y" type="xs:float"/>
+                                                <xs:element name="z" type="xs:float"/>
+                                            </xs:all>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:all>
+                                <xs:attribute name="id" type="xs:int"/>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="collision-triangle" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:all>
+                                    <xs:element name="v0">
+                                        <xs:complexType>
+                                            <xs:all>
+                                                <xs:element name="x" type="xs:float"/>
+                                                <xs:element name="y" type="xs:float"/>
+                                                <xs:element name="z" type="xs:float"/>
+                                            </xs:all>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="v1">
+                                        <xs:complexType>
+                                            <xs:all>
+                                                <xs:element name="x" type="xs:float"/>
+                                                <xs:element name="y" type="xs:float"/>
+                                                <xs:element name="z" type="xs:float"/>
+                                            </xs:all>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="v2">
+                                        <xs:complexType>
+                                            <xs:all>
+                                                <xs:element name="x" type="xs:float"/>
+                                                <xs:element name="y" type="xs:float"/>
+                                                <xs:element name="z" type="xs:float"/>
+                                            </xs:all>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="length" type="xs:float" minOccurs="0"/>
+                                    <xs:element name="position">
+                                        <xs:complexType>
+                                            <xs:all>
+                                                <xs:element name="x" type="xs:float"/>
+                                                <xs:element name="y" type="xs:float"/>
+                                                <xs:element name="z" type="xs:float"/>
+                                            </xs:all>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="rotation">
+                                        <xs:complexType>
+                                            <xs:all>
+                                                <xs:element name="x" type="xs:float"/>
+                                                <xs:element name="y" type="xs:float"/>
+                                                <xs:element name="z" type="xs:float"/>
+                                            </xs:all>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:all>
+                                <xs:attribute name="id" type="xs:int"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="spawn-points" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="spawn-point" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:all>
+                                    <xs:element name="rotation">
+                                        <xs:complexType>
+                                            <xs:all>
+                                                <xs:element name="z" type="xs:float"/>
+                                            </xs:all>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="position">
+                                        <xs:complexType>
+                                            <xs:all>
+                                                <xs:element name="x" type="xs:float"/>
+                                                <xs:element name="y" type="xs:float"/>
+                                                <xs:element name="z" type="xs:float"/>
+                                            </xs:all>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:all>
+                                <xs:attribute name="type" type="xs:string"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="bonus-regions" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="bonus-region" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="rotation">
+                                        <xs:complexType>
+                                            <xs:all>
+                                                <xs:element name="z" type="xs:float"/>
+                                            </xs:all>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="min">
+                                        <xs:complexType>
+                                            <xs:all>
+                                                <xs:element name="x" type="xs:float"/>
+                                                <xs:element name="y" type="xs:float"/>
+                                                <xs:element name="z" type="xs:float"/>
+                                            </xs:all>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="max">
+                                        <xs:complexType>
+                                            <xs:all>
+                                                <xs:element name="x" type="xs:float"/>
+                                                <xs:element name="y" type="xs:float"/>
+                                                <xs:element name="z" type="xs:float"/>
+                                            </xs:all>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="position">
+                                        <xs:complexType>
+                                            <xs:all>
+                                                <xs:element name="x" type="xs:float"/>
+                                                <xs:element name="y" type="xs:float"/>
+                                                <xs:element name="z" type="xs:float"/>
+                                            </xs:all>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:sequence maxOccurs="unbounded">
+                                        <xs:choice>
+                                            <xs:element name="bonus-type" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                                            <xs:element name="game-mode" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                                        </xs:choice>
+                                    </xs:sequence>
+                                </xs:sequence>
+                                <xs:attribute name="name" type="xs:string" fixed="free-bonus" use="required"/>
+                                <xs:attribute name="parachute" type="xs:boolean" use="required"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="special-geometry" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="special-box" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:all>
+                                    <xs:element name="minX" type="xs:float"/>
+                                    <xs:element name="minY" type="xs:float"/>
+                                    <xs:element name="minZ" type="xs:float"/>
+                                    <xs:element name="maxX" type="xs:float"/>
+                                    <xs:element name="maxY" type="xs:float"/>
+                                    <xs:element name="maxZ" type="xs:float"/>
+                                    <xs:element name="action" type="xs:string"/>
+                                </xs:all>
+                                <xs:attribute name="type" type="xs:string" fixed="special-geometry" use="required"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="dom-keypoints" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                        <xs:element name="dom-keypoint">
+                            <xs:complexType>
+                                <xs:all>
+                                    <xs:element name="position">
+                                        <xs:complexType>
+                                            <xs:all>
+                                                <xs:element name="x" type="xs:float"/>
+                                                <xs:element name="y" type="xs:float"/>
+                                                <xs:element name="z" type="xs:float"/>
+                                            </xs:all>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:all>
+                                <xs:attribute name="free" type="xs:boolean"/>
+                                <xs:attribute name="name" type="xs:string"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ctf-flags" minOccurs="0">
+                <xs:complexType>
+                    <xs:choice minOccurs="0" maxOccurs="unbounded">
+                        <xs:element name="flag-blue">
+                            <xs:complexType>
+                                <xs:all>
+                                    <xs:element name="x" type="xs:float"/>
+                                    <xs:element name="y" type="xs:float"/>
+                                    <xs:element name="z" type="xs:float"/>
+                                </xs:all>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="flag-red">
+                            <xs:complexType>
+                                <xs:all>
+                                    <xs:element name="x" type="xs:float"/>
+                                    <xs:element name="y" type="xs:float"/>
+                                    <xs:element name="z" type="xs:float"/>
+                                </xs:all>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+        </xs:all>
+        <xs:attribute name="version" type="xs:string"/>
+    </xs:complexType>
+</xs:element>
+
+</xs:schema>

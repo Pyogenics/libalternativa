@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="tanks-map">
+    <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="prop">
+                <xs:complexType>
+                    <xs:choice minOccurs="0" maxOccurs="unbounded">
+                        <xs:element name="texture-name" type="xs:string"/>
+                        <xs:element name="collision-box">
+                            <xs:complexType>
+                                <xs:all>
+                                    <xs:element name="size">
+                                        <xs:complexType>
+                                            <xs:attribute name="x" type="xs:float" use="required"/>
+                                            <xs:attribute name="y" type="xs:float" use="required"/>
+                                            <xs:attribute name="z" type="xs:float" use="required"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="position">
+                                        <xs:complexType>
+                                            <xs:attribute name="x" type="xs:float" use="required"/>
+                                            <xs:attribute name="y" type="xs:float" use="required"/>
+                                            <xs:attribute name="z" type="xs:float" use="required"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="angles">
+                                        <xs:complexType>
+                                            <xs:attribute name="x" type="xs:float" use="required"/>
+                                            <xs:attribute name="y" type="xs:float" use="required"/>
+                                            <xs:attribute name="z" type="xs:float" use="required"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:all>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="collision-rect">
+                            <xs:complexType>
+                                <xs:all>
+                                    <xs:element name="size">
+                                        <xs:complexType>
+                                            <xs:attribute name="x" type="xs:float" use="required"/>
+                                            <xs:attribute name="y" type="xs:float" use="required"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="position">
+                                        <xs:complexType>
+                                            <xs:attribute name="x" type="xs:float" use="required"/>
+                                            <xs:attribute name="y" type="xs:float" use="required"/>
+                                            <xs:attribute name="z" type="xs:float" use="required"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="angles">
+                                        <xs:complexType>
+                                            <xs:attribute name="x" type="xs:float" use="required"/>
+                                            <xs:attribute name="y" type="xs:float" use="required"/>
+                                            <xs:attribute name="z" type="xs:float" use="required"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:all>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="collision-triangle">
+                            <xs:complexType>
+                                <xs:all>
+                                    <xs:element name="v0">
+                                        <xs:complexType>
+                                            <xs:attribute name="x" type="xs:float" use="required"/>
+                                            <xs:attribute name="y" type="xs:float" use="required"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="v1">
+                                        <xs:complexType>
+                                            <xs:attribute name="x" type="xs:float" use="required"/>
+                                            <xs:attribute name="y" type="xs:float" use="required"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="v2">
+                                        <xs:complexType>
+                                            <xs:attribute name="x" type="xs:float" use="required"/>
+                                            <xs:attribute name="y" type="xs:float" use="required"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="position">
+                                        <xs:complexType>
+                                            <xs:attribute name="x" type="xs:float" use="required"/>
+                                            <xs:attribute name="y" type="xs:float" use="required"/>
+                                            <xs:attribute name="z" type="xs:float" use="required"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="angles">
+                                        <xs:complexType>
+                                            <xs:attribute name="x" type="xs:float" use="required"/>
+                                            <xs:attribute name="y" type="xs:float" use="required"/>
+                                            <xs:attribute name="z" type="xs:float" use="required"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:all>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:choice>
+                    <xs:attribute name="library-name" type="xs:string" use="required"/>
+                    <xs:attribute name="group-name" type="xs:string" use="required"/>
+                    <xs:attribute name="name" type="xs:string" use="required"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="mesh">
+                <xs:complexType>
+                    <xs:all>
+                        <xs:element name="position">
+                            <xs:complexType>
+                                <xs:attribute name="x" type="xs:float" use="required"/>
+                                <xs:attribute name="y" type="xs:float" use="required"/>
+                                <xs:attribute name="z" type="xs:float" use="required"/>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="rotation-z" type="xs:float"/>
+                        <xs:element name="texture-index" type="xs:int" minOccurs="0"/>
+                    </xs:all>
+                    <xs:attribute name="prop-index" type="xs:int" use="required"/>
+                    <xs:attribute name="free" type="xs:boolean"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="sprite">
+                <xs:complexType>
+                    <xs:all>
+                        <xs:element name="position">
+                            <xs:complexType>
+                                <xs:attribute name="x" type="xs:float" use="required"/>
+                                <xs:attribute name="y" type="xs:float" use="required"/>
+                                <xs:attribute name="z" type="xs:float" use="required"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:all>
+                    <xs:attribute name="prop-index" type="xs:int" use="required"/>
+                    <xs:attribute name="free" type="xs:boolean"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="spawn-point">
+                <xs:complexType>
+                    <xs:all>
+                        <xs:element name="position">
+                            <xs:complexType>
+                                <xs:attribute name="x" type="xs:float" use="required"/>
+                                <xs:attribute name="y" type="xs:float" use="required"/>
+                                <xs:attribute name="z" type="xs:float" use="required"/>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="direction" type="xs:float"/>
+                    </xs:all>
+                    <xs:attribute name="type" type="xs:string" use="required"/>
+                    <xs:attribute name="free" type="xs:boolean"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ctf-flags">
+                <xs:complexType>
+                    <xs:choice minOccurs="0" maxOccurs="unbounded">
+                        <xs:element name="flag-blue">
+                            <xs:complexType>
+                                <xs:attribute name="x" type="xs:float" use="required"/>
+                                <xs:attribute name="y" type="xs:float" use="required"/>
+                                <xs:attribute name="z" type="xs:float" use="required"/>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="flag-red">
+                            <xs:complexType>
+                                <xs:attribute name="x" type="xs:float" use="required"/>
+                                <xs:attribute name="y" type="xs:float" use="required"/>
+                                <xs:attribute name="z" type="xs:float" use="required"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+        <xs:attribute name="version" type="xs:string" use="required" fixed="3.0"/>
+    </xs:complexType>  
+</xs:element>
+
+</xs:schema>

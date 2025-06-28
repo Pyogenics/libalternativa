@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/product.schema.json",
+  "title": "Tanki Online prop library",
+  "description": "Defines props and their associated assets, allows map files to reference assets using convenient and reusable names.",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "props": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string" },
+                "oneOf": [
+                  {
+                    "properties": {
+                      "mesh": {
+                      "type": "object",
+                      "properties": {
+                        "file": { "type": "string" },
+                        "textures": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": { "type": "string" },
+                              "diffuseMap": { "type":"string" }
+                            },
+                            "required": ["name", "diffuseMap"]
+                          }
+                        }
+                      },
+                      "required": ["name", "textures"]
+                      }
+                    }
+                  },
+                  {
+                    "properties": {
+                      "sprite": {
+                        "type": "object",
+                        "properties": {
+                          "file": { "type": "string" },
+                          "width": { "type": "number" },
+                          "height": { "type": "number" },
+                          "originY": { "type": "number" },
+                          "scale": { "type": "number" }
+                        },
+                        "required": ["file", "width", "height", "originY", "scale"]
+                      }
+                    }
+                  }
+                ]
+              },
+              "required": ["name"]
+            }
+          }
+        },
+        "required": ["props"]
+      }
+    }
+  },
+  "required": ["groups"]
+}

@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/product.schema.json",
+  "title": "Tanki Online map",
+  "description": "Describes a scene made up of multiple prop objects and collision geometry.",
+  "type": "object",
+  "properties": {
+    "staticGeometry": {
+      "type": "array",
+      "items": {
+        "type" : "object",
+        "properties": {
+          "position": { "$ref": "#/$defs/vector3" },
+          "rotation": { "$ref": "#/$defs/vector3" },
+          "textureName": { "type": "string" },
+          "libraryName": { "type": "string" },
+          "groupName": { "type": "string" },
+          "name": { "type": "string" }
+        },
+        "required": ["position", "rotation", "textureName", "libraryName", "groupName", "name"]
+      }
+    },
+    "collisionGeometry": {
+      "type": "object",
+      "properties": {
+        "boxes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "position": { "$ref": "#/$defs/vector3" },
+              "rotation": { "$ref": "#/$defs/vector3" },
+              "size": { "$ref": "#/$defs/vector3" }
+            },
+            "required": ["position", "rotation", "size"]
+          }
+        },
+        "planes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "width": { "type": "number" },
+              "length": { "type": "number" },
+              "position": { "$ref": "#/$defs/vector3" },
+              "rotation": { "$ref": "#/$defs/vector3" }
+            },
+            "required": ["width", "length", "position", "rotation"]
+          }
+        },
+        "triangles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "v0": { "$ref": "#/$defs/vector3" },
+              "v1": { "$ref": "#/$defs/vector3" },
+              "v2": { "$ref": "#/$defs/vector3" },
+              "position": { "$ref": "#/$defs/vector3" },
+              "rotation": { "$ref": "#/$defs/vector3" }
+            },
+            "required": ["v0", "v1", "v2", "position", "rotation"]
+          }
+        }
+      },
+      "required": ["boxes", "planes", "triangles"]
+    }
+  },
+  "$defs": {
+    "vector3": {
+      "type": "array",
+      "items": { "type": "number" },
+      "minItems": 3,
+      "maxItems": 3
+    }
+  },
+  "required": ["staticGeometry", "collisionGeometry"]
+}
