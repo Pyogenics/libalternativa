@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/product.schema.json",
+  "title": "Tanki Online resource info file",
+  "description": "Describes files contained within a given resource.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "Name of the file"
+        },
+        "size": {
+            "type": "integer",
+            "description": "length of the file"
+        },
+        "md5": {
+            "type": "string",
+            "pattern": "^[a-fA-F0-9]{32}$",
+            "description": "md5 checksum of the file"
+        }
+    },
+    "required": ["name", "size", "md5"]
+  }
+}
