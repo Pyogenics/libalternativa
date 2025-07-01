@@ -17,7 +17,11 @@ nav:
   - Tanki Online:
     - A3D: formats/tanki/a3d.md
     - BattleMap: formats/tanki/battlemap.md
+    - XML map: formats/tanki/xmlmap.md
+    - JSON map: formats/tanki/jsonmap.md
     - LightmapData: formats/tanki/lightmapdata.md
     - Tara: formats/tanki/tara.md
   - Alternativa3D:
     - A3D: formats/alternativa3d/a3d.md
+  - Other:
+    - Alternativa Protocol: formats/alternativaprotocol.md
