@@ -58,6 +58,10 @@
                   
 <a href="../battlemap/" class="dropdown-item">BattleMap</a>
                   
+<a href="../xmlmap/" class="dropdown-item">XML map</a>
+                  
+<a href="../jsonmap/" class="dropdown-item">JSON map</a>
+                  
 <a href="../lightmapdata/" class="dropdown-item">LightmapData</a>
                   
 <a href="./" class="dropdown-item active">Tara</a>
@@ -68,6 +72,13 @@
                 <div class="dropdown-menu" aria-labelledby="nav-dropdown-Alternativa3D">
                   
 <a href="../../alternativa3d/a3d/" class="dropdown-item">A3D</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a href="#" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-dropdown-Other">Other <b class="caret"></b></a>
+                <div class="dropdown-menu" aria-labelledby="nav-dropdown-Other">
+                  
+<a href="../../alternativaprotocol/" class="dropdown-item">Alternativa Protocol</a>
                 </div>
               </li>
             </ul>
@@ -104,12 +115,30 @@
 
 
 <h1 id="tara">Tara</h1>
-<p>TODO</p>
+<p>Tanki Online resource archive, simple format that packs multiple files (without compression) into one archive. These files were utilised to store the game's prop libraries.</p>
+<h2 id="format">Format</h2>
+<p>The file utilises big endian encoding throughout.</p>
+<h3 id="file-table">File table</h3>
+<p>The file has no proper header or signature, it just starts with a table of files contained withing the archive.</p>
+<pre><code class="language-c">struct FileTable
+{
+    int fileCount;
+    struct FileInfo {
+        uint16_t filenameLength;
+        char filename[filenameLength];
+        uint32_t fileLength;
+    } fileInfo[fileCount];
+}
+</code></pre>
+<h3 id="file-blob">File blob</h3>
+<p>The file table is immediately followed by all the packed files stacked back to back with each other:</p>
+<pre><code>&lt;file1 data&gt;&lt;file2 data&gt;&lt;file3 data&gt;
+</code></pre>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <li class="last-updated-holder displayDate loading">
     <span class="last-updated-text">Last updated:</span>
-    <time role="presentation" datetime="2018-10-25T00:00:00.000Z" data-article-date-source="ms.date">2025-06-27</time>
+    <time role="presentation" datetime="2018-10-25T00:00:00.000Z" data-article-date-source="ms.date">2025-07-01</time>
   </li>
 <!--
   <li class="readingTime">
@@ -132,6 +161,9 @@
     <div id="toc-collapse" class="navbar-collapse collapse card">
         <ul class="nav flex-column bs-sidenav">
             <li class="nav-item main"><a class="nav-link" href="#tara">Tara</a></li>
+                <li class="nav-item">
+                    <a href="#format" class="nav-link">Format</a>
+                </li>
         </ul>
     </div>
 </div></div>
