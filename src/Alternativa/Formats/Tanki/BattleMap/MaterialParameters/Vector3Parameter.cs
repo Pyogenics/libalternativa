@@ -8,15 +8,18 @@ namespace libalternativa.Alternativa.Formats.Tanki.BattleMap.MaterialParameters;
 
 class Vector3Parameter : IProtocolObject
 {
-    public string Name = "";
-    public Vector3 Value = new();
+    public string Name { get; set; } = "";
+    public Vector3 Value { get; private set; }
 
     public void Decode(BinaryReader binaryReader, OptionalMask optionalMask)
     {
         Name = ArrayHelper.ReadString(binaryReader);
-        Value.X = BigEndianHelper.ReadSingleBE(binaryReader);
-        Value.Y = BigEndianHelper.ReadSingleBE(binaryReader);
-        Value.Z = BigEndianHelper.ReadSingleBE(binaryReader);
+        Value = new()
+        {
+            X = BigEndianHelper.ReadSingleBE(binaryReader),
+            Y = BigEndianHelper.ReadSingleBE(binaryReader),
+            Z = BigEndianHelper.ReadSingleBE(binaryReader)
+        };
     }
 
     public void Encode(BinaryWriter binaryWriter, OptionalMask optionalMask)

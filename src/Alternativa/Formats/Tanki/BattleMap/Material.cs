@@ -8,14 +8,14 @@ namespace libalternativa.Alternativa.Formats.Tanki.BattleMap;
 
 class Material : IProtocolObject
 {
-    public int ID;
-    public string Name = "";
-    public ScalarParameter[] ScalarParameters = Array.Empty<ScalarParameter>();
-    public string Shader = "";
-    public TextureParameter[] TextureParameters = Array.Empty<TextureParameter>();
-    public Vector2Parameter[] Vector2Parameters = Array.Empty<Vector2Parameter>();
-    public Vector3Parameter[] Vector3Parameters = Array.Empty<Vector3Parameter>();
-    public Vector4Parameter[] Vector4Parameters = Array.Empty<Vector4Parameter>();
+    public int ID { get; private set; }
+    public string Name { get; private set; } = "";
+    public ScalarParameter[] ScalarParameters { get; private set; } = Array.Empty<ScalarParameter>();
+    public string Shader { get; private set; } = "";
+    public TextureParameter[] TextureParameters { get; private set; } = Array.Empty<TextureParameter>();
+    public Vector2Parameter[] Vector2Parameters { get; private set; } = Array.Empty<Vector2Parameter>();
+    public Vector3Parameter[] Vector3Parameters { get; private set; } = Array.Empty<Vector3Parameter>();
+    public Vector4Parameter[] Vector4Parameters { get; private set; } = Array.Empty<Vector4Parameter>();
 
     public void Decode(BinaryReader binaryReader, OptionalMask optionalMask)
     {
@@ -26,9 +26,7 @@ class Material : IProtocolObject
         Shader = ArrayHelper.ReadString(binaryReader);
         TextureParameters = ArrayHelper.ReadObjectArray<TextureParameter>(binaryReader, optionalMask);
         if (optionalMask.GetOptional())
-        {
             Vector2Parameters = ArrayHelper.ReadObjectArray<Vector2Parameter>(binaryReader, optionalMask);
-        }
         if (optionalMask.GetOptional())
             Vector3Parameters = ArrayHelper.ReadObjectArray<Vector3Parameter>(binaryReader, optionalMask);
         if (optionalMask.GetOptional())

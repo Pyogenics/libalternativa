@@ -8,23 +8,30 @@ namespace libalternativa.Alternativa.Formats.Tanki.BattleMap.CollisionPrimitives
 
 class CollisionBox : IProtocolObject
 {
-    public Vector3 Position = new();
-    public Vector3 Rotation = new();
-    public Vector3 Scale = new();
+    public Vector3 Position { get; private set; }
+    public Vector3 Rotation { get; private set; }
+    public Vector3 Scale { get; private set; }
 
     public void Decode(BinaryReader binaryReader, OptionalMask optionalMask)
     {
-        Position.X = BigEndianHelper.ReadSingleBE(binaryReader);
-        Position.Y = BigEndianHelper.ReadSingleBE(binaryReader);
-        Position.Z = BigEndianHelper.ReadSingleBE(binaryReader);
-
-        Rotation.X = BigEndianHelper.ReadSingleBE(binaryReader);
-        Rotation.Y = BigEndianHelper.ReadSingleBE(binaryReader);
-        Rotation.Z = BigEndianHelper.ReadSingleBE(binaryReader);
-
-        Scale.X = BigEndianHelper.ReadSingleBE(binaryReader);
-        Scale.Y = BigEndianHelper.ReadSingleBE(binaryReader);
-        Scale.Z = BigEndianHelper.ReadSingleBE(binaryReader);
+        Position = new()
+        {
+            X = BigEndianHelper.ReadSingleBE(binaryReader),
+            Y = BigEndianHelper.ReadSingleBE(binaryReader),
+            Z = BigEndianHelper.ReadSingleBE(binaryReader)
+        };
+        Rotation = new()
+        {
+            X = BigEndianHelper.ReadSingleBE(binaryReader),
+            Y = BigEndianHelper.ReadSingleBE(binaryReader),
+            Z = BigEndianHelper.ReadSingleBE(binaryReader)
+        };
+        Scale = new()
+        {
+            X = BigEndianHelper.ReadSingleBE(binaryReader),
+            Y = BigEndianHelper.ReadSingleBE(binaryReader),
+            Z = BigEndianHelper.ReadSingleBE(binaryReader)
+        };
     }
 
     public void Encode(BinaryWriter binaryWriter, OptionalMask optionalMask)

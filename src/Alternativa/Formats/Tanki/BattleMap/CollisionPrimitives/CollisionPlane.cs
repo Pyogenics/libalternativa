@@ -8,23 +8,26 @@ namespace libalternativa.Alternativa.Formats.Tanki.BattleMap.CollisionPrimitives
 
 class CollisionPlane : IProtocolObject
 {
-    public double Length;
-    public Vector3 Position = new();
-    public Vector3 Rotation = new();
-    public double Width;
+    public double Length { get; private set; }
+    public Vector3 Position { get; private set; }
+    public Vector3 Rotation { get; private set; }
+    public double Width { get; private set; }
 
     public void Decode(BinaryReader binaryReader, OptionalMask optionalMask)
     {
         Length = BigEndianHelper.ReadDoubleBE(binaryReader);
-
-        Position.X = BigEndianHelper.ReadSingleBE(binaryReader);
-        Position.Y = BigEndianHelper.ReadSingleBE(binaryReader);
-        Position.Z = BigEndianHelper.ReadSingleBE(binaryReader);
-
-        Rotation.X = BigEndianHelper.ReadSingleBE(binaryReader);
-        Rotation.Y = BigEndianHelper.ReadSingleBE(binaryReader);
-        Rotation.Z = BigEndianHelper.ReadSingleBE(binaryReader);
-
+        Position = new()
+        {
+            X = BigEndianHelper.ReadSingleBE(binaryReader),
+            Y = BigEndianHelper.ReadSingleBE(binaryReader),
+            Z = BigEndianHelper.ReadSingleBE(binaryReader)
+        };
+        Rotation = new()
+        {
+            X = BigEndianHelper.ReadSingleBE(binaryReader),
+            Y = BigEndianHelper.ReadSingleBE(binaryReader),
+            Z = BigEndianHelper.ReadSingleBE(binaryReader)
+        };
         Width = BigEndianHelper.ReadDoubleBE(binaryReader);
     }
 

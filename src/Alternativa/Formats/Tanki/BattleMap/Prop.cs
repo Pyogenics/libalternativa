@@ -8,14 +8,14 @@ namespace libalternativa.Alternativa.Formats.Tanki.BattleMap;
 
 class Prop : IProtocolObject
 {
-    public string GroupName = "";
-    public int ID;
-    public string LibraryName = "";
-    public int MaterialID;
-    public string Name = "";
-    public Vector3 Position = new();
-    public Vector3 Rotation = new();
-    public Vector3 Scale = new();
+    public string GroupName { get; private set; } = "";
+    public int ID { get; private set; }
+    public string LibraryName { get; private set; } = "";
+    public int MaterialID { get; private set; }
+    public string Name { get; private set; } = "";
+    public Vector3 Position { get; private set; }
+    public Vector3 Rotation { get; private set; }
+    public Vector3 Scale { get; private set; }
 
     public void Decode(BinaryReader binaryReader, OptionalMask optionalMask)
     {
@@ -25,20 +25,29 @@ class Prop : IProtocolObject
         LibraryName = ArrayHelper.ReadString(binaryReader);
         MaterialID = BigEndianHelper.ReadInt32BE(binaryReader);
         Name = ArrayHelper.ReadString(binaryReader);
-        Position.X = BigEndianHelper.ReadSingleBE(binaryReader);
-        Position.Y = BigEndianHelper.ReadSingleBE(binaryReader);
-        Position.Z = BigEndianHelper.ReadSingleBE(binaryReader);
+        Position = new()
+        {
+            X = BigEndianHelper.ReadSingleBE(binaryReader),
+            Y = BigEndianHelper.ReadSingleBE(binaryReader),
+            Z = BigEndianHelper.ReadSingleBE(binaryReader)
+        };
         if (optionalMask.GetOptional())
         {
-            Rotation.X = BigEndianHelper.ReadSingleBE(binaryReader);
-            Rotation.Y = BigEndianHelper.ReadSingleBE(binaryReader);
-            Rotation.Z = BigEndianHelper.ReadSingleBE(binaryReader);
+            Rotation = new()
+            {
+                X = BigEndianHelper.ReadSingleBE(binaryReader),
+                Y = BigEndianHelper.ReadSingleBE(binaryReader),
+                Z = BigEndianHelper.ReadSingleBE(binaryReader)
+            };
         }
         if (optionalMask.GetOptional())
         {
-            Scale.X = BigEndianHelper.ReadSingleBE(binaryReader);
-            Scale.Y = BigEndianHelper.ReadSingleBE(binaryReader);
-            Scale.Z = BigEndianHelper.ReadSingleBE(binaryReader);
+            Scale = new()
+            {
+                X = BigEndianHelper.ReadSingleBE(binaryReader),
+                Y = BigEndianHelper.ReadSingleBE(binaryReader),
+                Z = BigEndianHelper.ReadSingleBE(binaryReader)
+            };
         }
     }
 

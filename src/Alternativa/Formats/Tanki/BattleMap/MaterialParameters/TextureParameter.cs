@@ -6,9 +6,9 @@ namespace libalternativa.Alternativa.Formats.Tanki.BattleMap.MaterialParameters;
 
 class TextureParameter : IProtocolObject
 {
-    public string LibraryName = "";
-    public string Name = "";
-    public string TextureName = "";
+    public string LibraryName { get; private set; } = "";
+    public string Name { get; private set; } = "";
+    public string TextureName { get; private set; } = "";
 
     public void Decode(BinaryReader binaryReader, OptionalMask optionalMask)
     {

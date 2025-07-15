@@ -7,8 +7,8 @@ namespace libalternativa.Alternativa.Formats.Tanki.BattleMap.MaterialParameters;
 
 class ScalarParameter : IProtocolObject
 {
-    public string Name = "";
-    public float Value;
+    public string Name { get; private set; } = "";
+    public float Value { get; private set; }
 
     public void Decode(BinaryReader binaryReader, OptionalMask optionalMask)
     {

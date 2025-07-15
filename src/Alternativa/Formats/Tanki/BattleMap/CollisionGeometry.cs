@@ -7,9 +7,9 @@ namespace libalternativa.Alternativa.Formats.Tanki.BattleMap;
 
 class CollisionGeometry : IProtocolObject
 {
-    public CollisionBox[] Boxes = Array.Empty<CollisionBox>();
-    public CollisionPlane[] Planes = Array.Empty<CollisionPlane>();
-    public CollisionTriangle[] Triangles = Array.Empty<CollisionTriangle>();
+    public CollisionBox[] Boxes { get; private set; } = Array.Empty<CollisionBox>();
+    public CollisionPlane[] Planes { get; private set; } = Array.Empty<CollisionPlane>();
+    public CollisionTriangle[] Triangles { get; private set; } = Array.Empty<CollisionTriangle>();
 
     public void Decode(BinaryReader binaryReader, OptionalMask optionalMask)
     {

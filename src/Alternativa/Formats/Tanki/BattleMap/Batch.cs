@@ -8,18 +8,21 @@ namespace libalternativa.Alternativa.Formats.Tanki.BattleMap;
 
 class Batch : IProtocolObject
 {
-    public int MaterialID;
-    public string Name = "";
-    public Vector3 Position = new();
-    public string PropIDs = "";
+    public int MaterialID { get; private set; }
+    public string Name { get; private set; } = "";
+    public Vector3 Position { get; private set; }
+    public string PropIDs { get; private set; } = "";
 
     public void Decode(BinaryReader binaryReader, OptionalMask optionalMask)
     {
         MaterialID = BigEndianHelper.ReadInt32BE(binaryReader);
         Name = ArrayHelper.ReadString(binaryReader);
-        Position.X = BigEndianHelper.ReadSingleBE(binaryReader);
-        Position.Y = BigEndianHelper.ReadSingleBE(binaryReader);
-        Position.Z = BigEndianHelper.ReadSingleBE(binaryReader);
+        Position = new()
+        {
+            X = BigEndianHelper.ReadSingleBE(binaryReader),
+            Y = BigEndianHelper.ReadSingleBE(binaryReader),
+            Z = BigEndianHelper.ReadSingleBE(binaryReader)
+        };
         PropIDs = ArrayHelper.ReadString(binaryReader);
     }
 

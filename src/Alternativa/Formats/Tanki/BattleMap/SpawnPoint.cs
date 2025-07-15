@@ -8,20 +8,24 @@ namespace libalternativa.Alternativa.Formats.Tanki.BattleMap;
 
 class SpawnPoint : IProtocolObject
 {
-    public Vector3 Position = new();
-    public Vector3 Rotation = new();
-    public int Type;
+    public Vector3 Position { get; private set; }
+    public Vector3 Rotation { get; private set; }
+    public int Type { get; private set; }
 
     public void Decode(BinaryReader binaryReader, OptionalMask optionalMask)
     {
-        Position.X = BigEndianHelper.ReadSingleBE(binaryReader);
-        Position.Y = BigEndianHelper.ReadSingleBE(binaryReader);
-        Position.Z = BigEndianHelper.ReadSingleBE(binaryReader);
-
-        Rotation.X = BigEndianHelper.ReadSingleBE(binaryReader);
-        Rotation.Y = BigEndianHelper.ReadSingleBE(binaryReader);
-        Rotation.Z = BigEndianHelper.ReadSingleBE(binaryReader);
-
+        Position = new()
+        {
+            X = BigEndianHelper.ReadSingleBE(binaryReader),
+            Y = BigEndianHelper.ReadSingleBE(binaryReader),
+            Z = BigEndianHelper.ReadSingleBE(binaryReader)
+        };
+        Rotation = new()
+        {
+            X = BigEndianHelper.ReadSingleBE(binaryReader),
+            Y = BigEndianHelper.ReadSingleBE(binaryReader),
+            Z = BigEndianHelper.ReadSingleBE(binaryReader)
+        };
         Type = BigEndianHelper.ReadInt32BE(binaryReader);
     }
 

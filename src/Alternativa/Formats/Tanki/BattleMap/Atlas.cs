@@ -7,11 +7,11 @@ namespace libalternativa.Alternativa.Formats.Tanki.BattleMap;
 
 class Atlas : IProtocolObject
 {
-    public int Height;
-    public string Name = "";
-    public int Padding;
-    public AtlasRect[] Rects = Array.Empty<AtlasRect>();
-    public int Width;
+    public int Height { get; private set; }
+    public string Name { get; private set; } = "";
+    public int Padding { get; private set; }
+    public AtlasRect[] Rects { get; private set; } = Array.Empty<AtlasRect>();
+    public int Width { get; private set; }
 
     public void Decode(BinaryReader binaryReader, OptionalMask optionalMask)
     {

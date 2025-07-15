@@ -8,23 +8,26 @@ namespace libalternativa.Alternativa.Formats.Tanki.BattleMap.CollisionPrimitives
 
 class CollisionTriangle : IProtocolObject
 {
-    public double Length;
-    public Vector3 Position = new();
-    public Vector3 Rotation = new();
-    public Vector3[] Vertices = new Vector3[3];
+    public double Length { get; private set; }
+    public Vector3 Position { get; private set; }
+    public Vector3 Rotation { get; private set; }
+    public Vector3[] Vertices { get; } = new Vector3[3];
 
     public void Decode(BinaryReader binaryReader, OptionalMask optionalMask)
     {
         Length = BigEndianHelper.ReadDoubleBE(binaryReader);
-
-        Position.X = BigEndianHelper.ReadSingleBE(binaryReader);
-        Position.Y = BigEndianHelper.ReadSingleBE(binaryReader);
-        Position.Z = BigEndianHelper.ReadSingleBE(binaryReader);
-
-        Rotation.X = BigEndianHelper.ReadSingleBE(binaryReader);
-        Rotation.Y = BigEndianHelper.ReadSingleBE(binaryReader);
-        Rotation.Z = BigEndianHelper.ReadSingleBE(binaryReader);
-
+        Position = new()
+        {
+            X = BigEndianHelper.ReadSingleBE(binaryReader),
+            Y = BigEndianHelper.ReadSingleBE(binaryReader),
+            Z = BigEndianHelper.ReadSingleBE(binaryReader)
+        };
+        Rotation = new()
+        {
+            X = BigEndianHelper.ReadSingleBE(binaryReader),
+            Y = BigEndianHelper.ReadSingleBE(binaryReader),
+            Z = BigEndianHelper.ReadSingleBE(binaryReader)
+        };
         for (int vertexI = 0; vertexI < 3; vertexI++)
         {
             Vector3 vertex = new();

@@ -6,13 +6,13 @@ namespace libalternativa.Alternativa.Formats.Tanki.BattleMap;
 
 class BattleMap : IProtocolObject
 {
-    public Atlas[] Atlases = Array.Empty<Atlas>();
-    public Batch[] Batches = Array.Empty<Batch>();
-    public CollisionGeometry CollisionGeometry = new();
-    public CollisionGeometry CollisionGeometryOutsideGamingZone = new();
-    public Material[] Materials = Array.Empty<Material>();
-    public SpawnPoint[] SpawnPoints = Array.Empty<SpawnPoint>();
-    public Prop[] StaticGeometry = Array.Empty<Prop>();
+    public Atlas[] Atlases { get; private set; } = Array.Empty<Atlas>();
+    public Batch[] Batches { get; private set; } = Array.Empty<Batch>();
+    public CollisionGeometry CollisionGeometry { get; private set; } = new();
+    public CollisionGeometry CollisionGeometryOutsideGamingZone { get; private set; } = new();
+    public Material[] Materials { get; private set; } = Array.Empty<Material>();
+    public SpawnPoint[] SpawnPoints { get; private set; } = Array.Empty<SpawnPoint>();
+    public Prop[] StaticGeometry { get; private set; } = Array.Empty<Prop>();
 
     public void Decode(BinaryReader binaryReader, OptionalMask optionalMask)
     {
