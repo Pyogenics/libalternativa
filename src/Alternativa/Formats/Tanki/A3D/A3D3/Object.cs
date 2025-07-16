@@ -5,10 +5,10 @@ namespace libalternativa.Alternativa.Formats.Tanki.A3D.A3D3;
 
 class Object : IModelDataObject
 {
-    public int MeshID;
-    public int TransformID;
-    public int MaterialCount;
-    public int[] MaterialIDs = Array.Empty<int>();
+    public int MeshID { get; private set; }
+    public int TransformID { get; private set; }
+    public int MaterialCount { get; private set; }
+    public int[] MaterialIDs { get; private set; } = Array.Empty<int>();
 
     public void Read(BinaryReader binaryReader)
     {

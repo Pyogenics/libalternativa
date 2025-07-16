@@ -5,8 +5,8 @@ namespace libalternativa.Alternativa.Formats.Tanki.A3D.A3D3;
 
 class Submesh : IModelDataObject
 {
-    public int IndexCount;
-    public int[] Indices = Array.Empty<int>();
+    public int IndexCount { get; private set; }
+    public int[] Indices { get; private set; } = Array.Empty<int>();
 
     public void Read(BinaryReader binaryReader)
     {

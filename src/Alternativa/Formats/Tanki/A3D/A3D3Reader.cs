@@ -12,10 +12,10 @@ class A3D3Reader
     private const int TRANSFORM_BLOCK_SIGNATURE = 3;
     private const int OBJECT_BLOCK_SIGNATURE = 5;
 
-    public A3D3.Material[] Materials = Array.Empty<A3D3.Material>();
-    public A3D3.Mesh[] Meshes = Array.Empty<A3D3.Mesh>();
-    public A3D3.Transform[] Transforms = Array.Empty<A3D3.Transform>();
-    public A3D3.Object[] Objects = Array.Empty<A3D3.Object>();
+    public A3D3.Material[] Materials { get; private set; } = Array.Empty<A3D3.Material>();
+    public A3D3.Mesh[] Meshes { get; private set; } = Array.Empty<A3D3.Mesh>();
+    public A3D3.Transform[] Transforms { get; private set; } = Array.Empty<A3D3.Transform>();
+    public A3D3.Object[] Objects { get; private set; } = Array.Empty<A3D3.Object>();
 
     public void Read(BinaryReader binaryReader)
     {

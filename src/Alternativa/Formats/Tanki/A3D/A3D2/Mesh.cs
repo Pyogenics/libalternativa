@@ -5,8 +5,8 @@ namespace libalternativa.Alternativa.Formats.Tanki.A3D.A3D2;
 
 class Mesh : IModelDataObject
 {
-    public VertexBuffer[] VertexBuffers = Array.Empty<VertexBuffer>();
-    public Submesh[] Submeshes = Array.Empty<Submesh>();
+    public VertexBuffer[] VertexBuffers { get; private set; } = Array.Empty<VertexBuffer>();
+    public Submesh[] Submeshes { get; private set; } = Array.Empty<Submesh>();
 
     public void Read(BinaryReader binaryReader)
     {

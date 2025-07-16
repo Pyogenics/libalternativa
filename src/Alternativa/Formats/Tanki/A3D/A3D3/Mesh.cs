@@ -6,23 +6,29 @@ namespace libalternativa.Alternativa.Formats.Tanki.A3D.A3D3;
 
 class Mesh : IModelDataObject
 {
-    public string Name = "";
-    public Vector3 BBoxMax = new();
-    public Vector3 BBoxMin = new();
-    public float Unknown;
-    public VertexBuffer[] VertexBuffers = Array.Empty<VertexBuffer>();
-    public Submesh[] Submeshes = Array.Empty<Submesh>();
+    public string Name { get; private set; } = "";
+    public Vector3 BBoxMax { get; private set; }
+    public Vector3 BBoxMin { get; private set; }
+    public float Unknown { get; private set; }
+    public VertexBuffer[] VertexBuffers { get; private set; } = Array.Empty<VertexBuffer>();
+    public Submesh[] Submeshes { get; private set; } = Array.Empty<Submesh>();
 
     public void Read(BinaryReader binaryReader)
     {
         Name = IOHelper.ReadLengthPrefixedString(binaryReader);
 
-        BBoxMax.X = binaryReader.ReadSingle();
-        BBoxMax.Y = binaryReader.ReadSingle();
-        BBoxMax.Z = binaryReader.ReadSingle();
-        BBoxMin.X = binaryReader.ReadSingle();
-        BBoxMin.Y = binaryReader.ReadSingle();
-        BBoxMin.Z = binaryReader.ReadSingle();
+        BBoxMax = new()
+        {
+            X = binaryReader.ReadSingle(),
+            Y = binaryReader.ReadSingle(),
+            Z = binaryReader.ReadSingle()
+        };
+        BBoxMin = new()
+        {
+            X = binaryReader.ReadSingle(),
+            Y = binaryReader.ReadSingle(),
+            Z = binaryReader.ReadSingle()
+        };
         Unknown = binaryReader.ReadSingle(); // Unknown float value, related to bbox?
 
         int vertexCount = binaryReader.ReadInt32();

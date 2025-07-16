@@ -6,16 +6,19 @@ namespace libalternativa.Alternativa.Formats.Tanki.A3D.A3D2;
 
 class Material : IModelDataObject
 {
-    public string Name = "";
-    public Vector3 Color = new();
-    public string DiffuseMap = "";
+    public string Name { get; private set; } = "";
+    public Vector3 Color { get; private set; }
+    public string DiffuseMap { get; private set; } = "";
 
     public void Read(BinaryReader binaryReader)
     {
         Name = IOHelper.ReadNullTerminatedString(binaryReader);
-        Color.X = binaryReader.ReadSingle();
-        Color.Y = binaryReader.ReadSingle();
-        Color.Z = binaryReader.ReadSingle();
+        Color = new()
+        {
+            X = binaryReader.ReadSingle(),
+            Y = binaryReader.ReadSingle(),
+            Z = binaryReader.ReadSingle()
+        };
         DiffuseMap = IOHelper.ReadNullTerminatedString(binaryReader);
     }
 

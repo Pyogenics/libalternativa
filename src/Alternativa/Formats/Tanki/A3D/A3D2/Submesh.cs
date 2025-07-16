@@ -6,9 +6,9 @@ namespace libalternativa.Alternativa.Formats.Tanki.A3D.A3D2;
 class Submesh : IModelDataObject
 {
     public int FaceCount;
-    public int[] Indices = Array.Empty<int>();
-    public int[] SmoothingGroups = Array.Empty<int>();
-    public int MaterialID;
+    public int[] Indices { get; private set; } = Array.Empty<int>();
+    public int[] SmoothingGroups { get; private set; } = Array.Empty<int>();
+    public int MaterialID { get; private set; }
 
     public void Read(BinaryReader binaryReader)
     {

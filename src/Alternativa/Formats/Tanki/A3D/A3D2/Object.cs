@@ -5,9 +5,9 @@ namespace libalternativa.Alternativa.Formats.Tanki.A3D.A3D2;
 
 class Object : IModelDataObject
 {
-    public string Name = "";
-    public int MeshID;
-    public int TransformID;
+    public string Name { get; private set; } = "";
+    public int MeshID { get; private set; }
+    public int TransformID { get; private set; }
 
     public void Read(BinaryReader binaryReader)
     {

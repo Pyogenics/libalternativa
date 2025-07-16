@@ -12,9 +12,9 @@ class VertexBuffer
     public const int VERTEXTYPE_COLOR = 5;
     public const int VERTEXTYPE_NORMAL2 = 6;
 
-    public int BufferType;
-    public int VertexSize;
-    public float[] VertexData = Array.Empty<float>();
+    public int BufferType { get; private set; }
+    public int VertexSize { get; private set; }
+    public float[] VertexData { get; private set; } = Array.Empty<float>();
 
     public void Read(BinaryReader binaryReader, int vertexCount)
     {
