@@ -15,6 +15,7 @@ class A3D3Reader
     public A3D3.Material[] Materials { get; private set; } = Array.Empty<A3D3.Material>();
     public A3D3.Mesh[] Meshes { get; private set; } = Array.Empty<A3D3.Mesh>();
     public A3D3.Transform[] Transforms { get; private set; } = Array.Empty<A3D3.Transform>();
+    public int[] TransformParentIDs { get; private set; } = Array.Empty<int>();
     public A3D3.Object[] Objects { get; private set; } = Array.Empty<A3D3.Object>();
 
     public void Read(BinaryReader binaryReader)
@@ -105,6 +106,12 @@ class A3D3Reader
             A3D3.Transform transform = new();
             transform.Read(blockReader);
             Transforms[transformI] = transform;
+        }
+        TransformParentIDs = new int[transformCount];
+        for (int transformParentI = 0; transformParentI < transformCount; transformParentI++)
+        {
+            int parentID = blockReader.ReadInt32();
+            TransformParentIDs[transformParentI] = parentID;
         }
 
         // Data padding
