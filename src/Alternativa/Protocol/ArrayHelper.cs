@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using libalternativa.Utils;
 
 namespace libalternativa.Alternativa.Protocol;
 
@@ -52,5 +53,25 @@ class ArrayHelper
         int length = ReadLength(binaryReader);
         byte[] str = binaryReader.ReadBytes(length);
         return System.Text.Encoding.UTF8.GetString(str);
+    }
+
+    public static byte[] ReadByteArray(BinaryReader binaryReader)
+    {
+        int length = ReadLength(binaryReader);
+        byte[] bytes = binaryReader.ReadBytes(length);
+
+        return bytes;
+    }
+
+    public static float[] ReadFloatArrayBE(BinaryReader binaryReader)
+    {
+        int length = ReadLength(binaryReader);
+        float[] floats = new float[length];
+        for (int floatI = 0; floatI < length; floatI++)
+        {
+            floats[floatI] = BigEndianHelper.ReadSingleBE(binaryReader);
+        }
+
+        return floats;
     }
 }

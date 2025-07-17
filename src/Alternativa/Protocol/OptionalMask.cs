@@ -54,8 +54,6 @@ class OptionalMask
                 }
             }
         }
-
-        // optionals.Reverse();
     }
 
     public bool GetOptional()
