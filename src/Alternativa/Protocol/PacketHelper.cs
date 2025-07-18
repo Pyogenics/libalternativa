@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.IO.Compression;
 
@@ -30,9 +29,9 @@ class PacketHelper
         {
             // Compressed packet
             using MemoryStream compressedStream = new(data);
-            using DeflateStream deflateStream = new(compressedStream, CompressionMode.Decompress);
+            using ZLibStream zLibStream = new(compressedStream, CompressionMode.Decompress);
             using MemoryStream rawStream = new();
-            deflateStream.CopyTo(rawStream);
+            zLibStream.CopyTo(rawStream);
             data = rawStream.ToArray();
         }
 
