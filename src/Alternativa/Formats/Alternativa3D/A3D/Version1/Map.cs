@@ -1,38 +1,26 @@
-using System.IO;
 using libalternativa.Alternativa.Protocol;
-using libalternativa.Utils;
 
 namespace libalternativa.Alternativa.Formats.Alternativa3D.A3D.Version1;
 
-class Map : IProtocolObject
+class Map : ProtocolObject
 {
-    public int Channel { get; private set; }
-    public int ID { get; private set; }    
-    public int ImageID { get; private set; }
-    public float UOffset { get; private set; }
-    public float UScale { get; private set; }
-    public float VOffset { get; private set; }
-    public float VScale { get; private set; }
+    public short Channel;
 
-    public void Decode(BinaryReader binaryReader, OptionalMask optionalMask)
-    {
-        Channel = BigEndianHelper.ReadInt16BE(binaryReader);
-        if (optionalMask.GetOptional())
-            ID = BigEndianHelper.ReadInt32BE(binaryReader);
-        if (optionalMask.GetOptional())
-            ImageID = BigEndianHelper.ReadInt32BE(binaryReader);
-        if (optionalMask.GetOptional())
-            UOffset = BigEndianHelper.ReadSingleBE(binaryReader);
-        if (optionalMask.GetOptional())
-            UScale = BigEndianHelper.ReadSingleBE(binaryReader);
-        if (optionalMask.GetOptional())
-            VOffset = BigEndianHelper.ReadSingleBE(binaryReader);
-        if (optionalMask.GetOptional())
-            VScale = BigEndianHelper.ReadSingleBE(binaryReader);
-    }
+    [Optional]
+    public int? ID;
 
-    public void Encode(BinaryWriter binaryWriter, OptionalMask optionalMask)
-    {
-        throw new System.NotImplementedException();
-    }
+    [Optional]
+    public int? ImageID;
+    
+    [Optional]
+    public float? UOffset;
+
+    [Optional]
+    public float? UScale;
+
+    [Optional]
+    public float? VOffset;
+
+    [Optional]
+    public float? VScale;
 }

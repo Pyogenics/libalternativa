@@ -5,11 +5,12 @@ using libalternativa.Utils;
 
 namespace libalternativa.Alternativa.Formats.Alternativa3D.A3D.Version1;
 
-class Transform : IProtocolObject
+class Transform : ProtocolObject
 {
-    public Matrix4x4 Matrix { get; private set; }
+    [Optional]
+    public Matrix4x4? Matrix;
 
-    public void Decode(BinaryReader binaryReader, OptionalMask optionalMask)
+    public override void Decode(BinaryReader binaryReader, OptionalMask optionalMask)
     {
         if (optionalMask.GetOptional())
         {
@@ -31,7 +32,7 @@ class Transform : IProtocolObject
         }
     }
 
-    public void Encode(BinaryWriter binaryWriter, OptionalMask optionalMask)
+    public override void Encode(BinaryWriter binaryWriter, OptionalMask optionalMask)
     {
         throw new System.NotImplementedException();
     }

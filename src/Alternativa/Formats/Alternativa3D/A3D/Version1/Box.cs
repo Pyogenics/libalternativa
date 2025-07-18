@@ -1,27 +1,15 @@
 using System;
-using System.IO;
 using libalternativa.Alternativa.Protocol;
-using libalternativa.Utils;
 
 namespace libalternativa.Alternativa.Formats.Alternativa3D.A3D.Version1;
 
-class Box : IProtocolObject
+class Box : ProtocolObject
 {
-    public float[] Bounds { get; private set; } = Array.Empty<float>();
-    public int ID { get; private set; }
+    [Optional]
+    public float[]? Bounds;
 
-    public void Decode(BinaryReader binaryReader, OptionalMask optionalMask)
-    {
-        if (optionalMask.GetOptional())
-            Bounds = ArrayHelper.ReadFloatArrayBE(binaryReader);
-        if (optionalMask.GetOptional())
-            ID = BigEndianHelper.ReadInt32BE(binaryReader);
-    }
-
-    public void Encode(BinaryWriter binaryWriter, OptionalMask optionalMask)
-    {
-        throw new System.NotImplementedException();
-    }
+    [Optional]
+    public int? ID;
 
     public override string ToString()
     {

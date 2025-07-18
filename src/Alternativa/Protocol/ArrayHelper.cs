@@ -74,4 +74,29 @@ class ArrayHelper
 
         return floats;
     }
+
+    public static long[] ReadInt64ArrayBE(BinaryReader binaryReader)
+    {
+        int length = ReadLength(binaryReader);
+        long[] longs = new long[length];
+        for (long longI = 0; longI < length; longI++)
+        {
+            longs[longI] = BigEndianHelper.ReadInt64BE(binaryReader);
+        }
+
+        return longs;
+    }
+
+    public static int[] ReadInt32ArrayBE(BinaryReader binaryReader)
+    {
+        int length = ReadLength(binaryReader);
+        int[] ints = new int[length];
+        for (int intI = 0; intI < length; intI++)
+        {
+            ints[intI] = BigEndianHelper.ReadInt32BE(binaryReader);
+        }
+
+        return ints;
+    }
+
 }
